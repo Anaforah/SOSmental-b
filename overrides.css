@@ -1,0 +1,88 @@
+.nav-cta,
+.button {
+  align-items: center;
+}
+
+.nav-cta {
+  display: inline-flex;
+  padding: 9px 17px;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.nav-cta:hover {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #fff;
+}
+
+.nav-cta span {
+  line-height: 1;
+}
+
+.button span {
+  line-height: 1;
+}
+
+.app-image {
+  display: block;
+  max-height: 620px;
+  max-width: 100%;
+  object-fit: contain;
+  width: 650px;
+}
+
+@media (max-width: 760px) {
+  .app-image {
+    max-height: 430px;
+  }
+}
+
+.button-light {
+  padding: 11px 22px;
+}
+
+.status-page {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: calc(100vh - 90px);
+  max-width: 760px;
+  padding: 70px 6%;
+}
+
+.status-icon {
+  align-items: center;
+  background: var(--coral);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 42px;
+  height: 66px;
+  justify-content: center;
+  line-height: 1;
+  margin-bottom: 32px;
+  width: 66px;
+}
+
+.status-page h1 {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(50px, 7vw, 82px);
+  letter-spacing: -4px;
+  line-height: 1;
+  margin: 22px 0;
+}
+
+.status-page h1 em {
+  color: var(--coral);
+  font-style: normal;
+}
+
+.status-page p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 32px;
+  max-width: 540px;
+}
