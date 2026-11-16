@@ -86,10 +86,13 @@
       <small>© 2024 SOS Mental</small>
     </footer>
     <script src="script.js"></script>
-    <script>
+
+<script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPpdsTuyZ7tOVZ9dva25W_XsAeHE-az85VIVPItdtpvpIHn81WmQghZFjbxrXrjOue/exec';
+
 const LANDING_VERSION = 'A';
 
+// Criar identificador anónimo do visitante
 let visitorId = localStorage.getItem('sos_visitor_id');
 
 if (!visitorId) {
@@ -97,30 +100,44 @@ if (!visitorId) {
   localStorage.setItem('sos_visitor_id', visitorId);
 }
 
+// Enviar informação para Google Sheets
 function registarAcao(action) {
+
+  const dados = {
+    visitor: visitorId,
+    version: LANDING_VERSION,
+    action: action
+  };
+
   fetch(SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: {
       'Content-Type': 'text/plain;charset=utf-8'
     },
-    body: JSON.stringify({
-      visitor: visitorId,
-      version: LANDING_VERSION,
-      action: action
-    })
+    body: JSON.stringify(dados),
+    keepalive: true
+  }).catch(error => {
+    console.error('Erro ao registar:', error);
   });
 }
 
 // Registar visita
 registarAcao('visita');
 
-// Registar clique no CTA
-document.querySelectorAll('[data-cta]').forEach(button => {
-  button.addEventListener('click', () => {
+// Registar cliques em todos os botões CTA
+document.addEventListener('click', function(event) {
+
+  const button = event.target.closest('[data-cta]');
+
+  if (button) {
     registarAcao('clique_cta');
-  });
+  }
+
 });
 </script>
+</body>
+</html>
+
   </body>
 </html>
